@@ -1,0 +1,1064 @@
+[
+    {
+        "title": "Class 1",
+        "sentences": [
+            {
+                "colorHex": "802DD3",
+                "title": "Alice in Wonderland",
+                "compiledSentence": "Alice sighed wearily. \"I think you might do something better with the time,\" she said, \"than waste it in asking riddles that have no answers.\"",
+                "phrases": [
+                    {
+                        "value": "Alice",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "sighed",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "wearily",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "I",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "think",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "you",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "might",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "do",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "something",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "better",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "with",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "time",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "she",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "said",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "than",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "waste",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "it",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "in",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "asking",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "riddles",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "that",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "have",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "no",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "answers",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    }
+                ]
+            },
+            {
+                "colorHex": "64A945",
+                "title": "The Wizard of Oz",
+                "compiledSentence": "The Wizard held his lanterns so that their light would flood one of the little pockets in the rock. \"Why, it's a dragon!\" he exclaimed.",
+                "phrases": [
+                    {
+                        "value": "The Wizard",
+                        "colorHex": "DF2323"
+                    },
+                    {
+                        "value": "held",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "his",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "lanterns",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "so",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "that",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "their",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "light",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "would",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "flood",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "one",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "of",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "little",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "pockets",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "in",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "rock",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "Why",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "it 's",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "a",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "dragon",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "!",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "he",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "exclaimed",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    }
+                ]
+            },
+            {
+                "colorHex": "FFFFFF",
+                "title": "A Christmas Carol",
+                "compiledSentence": "When Scrooge awoke, it was so dark, that looking out of bed, he could scarcely distinguish the transparent window from the opaque walls of his chamber.",
+                "phrases": [
+                    {
+                        "value": "When",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "Scrooge",
+                        "colorHex": "DF2323"
+                    },
+                    {
+                        "value": "awoke",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "it",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "was",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "so",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "dark",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "that",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "looking",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "out",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "of",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "bed",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "he",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "could",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "scarcely",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "distinguish",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "transparent",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "window",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "from",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "opaque",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "walls",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "of",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "his",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "chamber",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    }
+                ]
+            },
+            {
+                "colorHex": "D32D6B",
+                "title": "Romeo and Juliet",
+                "compiledSentence": "What's in a name? That which we call a rose by any other name would smell as sweet.",
+                "phrases": [
+                    {
+                        "value": "What 's",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "in",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "a",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "name",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "?",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "That",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "which",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "we",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "call",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "a",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "rose",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "by",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "any",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "other",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "name",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "would",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "smell",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "as",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "sweet",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    }
+                ]
+            },
+            {
+                "colorHex": "7E684B",
+                "title": "Sherlock Holmes",
+                "compiledSentence": "Mr. Sherlock Holmes, who was usually very late in the mornings, save upon those not infrequent occasions when he was up all night, was seated at the breakfast table.",
+                "phrases": [
+                    {
+                        "value": "Mr.",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "Sherlock Holmes",
+                        "colorHex": "DF2323"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "who",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "was",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "usually",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "very",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "late",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "in",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "mornings",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "save",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "upon",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "those",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "not",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "infrequent",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "occasions",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "when",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "he",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "was",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "up",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "all",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "night",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "was",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "seated",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "at",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "breakfast",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "table",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    }
+                ]
+            },
+            {
+                "colorHex": "DEFE00",
+                "title": "Rapunzel",
+                "compiledSentence": "The next day when it began to grow dark, he went to the tower and cried: \"Rapunzel, Rapunzel, Let down your hair to me.\"",
+                "phrases": [
+                    {
+                        "value": "The",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "next",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "day",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "when",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "it",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "began",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "to",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "grow",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "dark",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "he",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "went",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "to",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "tower",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "and",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "cried",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ":",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "Rapunzel",
+                        "colorHex": "E81A1A"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "Rapunzel",
+                        "colorHex": "E81A1A"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "Let",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "down",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "your",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "hair",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "to",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "me",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    }
+                ]
+            },
+            {
+                "colorHex": "45A996",
+                "title": "Hansel and Gretel",
+                "compiledSentence": "The old woman was in reality a wicked witch, who lay in wait for children, and had only built the little house of bread in order to entice them there.",
+                "phrases": [
+                    {
+                        "value": "The",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "old woman",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "was",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "in",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "reality",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "a",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "wicked witch",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "who",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "lay",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "in",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "wait",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "for",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "children",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "and",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "had",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "only",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "built",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "little",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "house",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "of",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "bread",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "in",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "order",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "to",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "entice",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "them",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "there",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    }
+                ]
+            },
+            {
+                "colorHex": "FE0000",
+                "title": "Little Red Riding Hood",
+                "compiledSentence": "There lay her grandmother with her cap pulled far over her face, and looking very strange.\"Oh! Grandmother,\" she said, \"what big ears you have!\"\n\"The better to hear you with, my child,\" was the reply.",
+                "phrases": [
+                    {
+                        "value": "There",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "lay",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "her",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "grandmother",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "with",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "her",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "cap",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "pulled",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "far",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "over",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "her",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "face",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "and",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "looking",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "very",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "strange",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "Oh",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "!",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "Grandmother",
+                        "colorHex": "DF2323"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "she said",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\" what big ears you have ! \"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "The",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "better",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "to",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "hear",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "you",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "with",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "my",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "child",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ",",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "\"",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "was",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "the",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": "reply",
+                        "colorHex": "1E3799"
+                    },
+                    {
+                        "value": ".",
+                        "colorHex": "1E3799"
+                    }
+                ]
+            }
+        ],
+        "colorHex": "FFFFFF"
+    }
+]
