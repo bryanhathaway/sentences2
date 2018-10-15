@@ -11,6 +11,18 @@ However, with iOS 11 it became incompatible with the 64-bit-only architecture, a
 
 This project is a Swift 4, native UIKit rewrite, that should allow updates to be made easily.
 
+## Tech Info
+Data models in this app conform to `Codable` and are persisted by writing to a `JSON` file.
+The structure is quite simple, at the root level the device as an array of [Folder](Boxes/Model/Folder.swift)s, and each `Folder` contains an array of [Sentence](Boxes/Model/Sentence.swift)s. A sentence would be enough for a basic implementation, however they each contain an array of [Phrase](Boxes/Model/Phrases.swift)s which allows a single box to hold multiple words or varying colours.
+
+That's essentially it.
+
+Sharing to nearby devices [is implemented](Boxes/Utilities/MultipeerHandler.swift) via [Multipeer Connectivity](https://developer.apple.com/documentation/multipeerconnectivity), which simply shares the above data model's JSON representation wrapped with some sharing options (read-only, overwrite).
+
+When creating a sentence, [NSLinguisticTagger](https://developer.apple.com/documentation/foundation/nslinguistictagger) is [used to breakdown](Boxes/Utilities/LanguageProcessor.swift) the sentence into individual words, rather than relying on a string.split with a space delimiter.
+
+The [Text-to-speech handling](Boxes/Utilities/TextToSpeech.swift) when reading a sentence aloud is handled with [AVSpeechSynthesizer](https://developer.apple.com/documentation/avfoundation/avspeechsynthesizer)
+
 ## Author
 Bryan Hathaway
 
