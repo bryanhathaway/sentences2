@@ -59,6 +59,7 @@
 		93FF6E972176B93D007AC46F /* PersistenceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E962176B93D007AC46F /* PersistenceHelperTests.swift */; };
 		93FF6E9A2176E59A007AC46F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E992176E59A007AC46F /* SettingsViewController.swift */; };
 		93FF6E9C2176F204007AC46F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E9B2176F204007AC46F /* Configuration.swift */; };
+		93FF6E9E21770B91007AC46F /* ConfigurationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E9D21770B91007AC46F /* ConfigurationOption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		93FF6E962176B93D007AC46F /* PersistenceHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelperTests.swift; sourceTree = "<group>"; };
 		93FF6E992176E59A007AC46F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		93FF6E9B2176F204007AC46F /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		93FF6E9D21770B91007AC46F /* ConfigurationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				93FF6E992176E59A007AC46F /* SettingsViewController.swift */,
+				93FF6E9D21770B91007AC46F /* ConfigurationOption.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				93FF6E9C2176F204007AC46F /* Configuration.swift in Sources */,
 				93FF6E512170189E007AC46F /* GlassSwitchCell.swift in Sources */,
 				93FF6E5521701E90007AC46F /* AccessControl.swift in Sources */,
+				93FF6E9E21770B91007AC46F /* ConfigurationOption.swift in Sources */,
 				93FF6E252165DD1B007AC46F /* UIColor+Hex.swift in Sources */,
 				93FF6E0E21645C0F007AC46F /* TextToSpeech.swift in Sources */,
 				93FF6E46216EF53B007AC46F /* ReceivedViewController.swift in Sources */,
