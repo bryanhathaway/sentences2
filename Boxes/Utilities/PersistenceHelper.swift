@@ -23,11 +23,13 @@ class PersistenceHelper {
 
     private var fileURL: URL?
 
+    /// Initializes a PersistenceHelper that is pointed to a file in the app's document directory.
     init(fileNameWithExtension: String) {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         fileURL = paths.first?.appendingPathComponent(fileNameWithExtension)
     }
 
+    /// Initializes a PersistenceHelper that is pointed to a file in the app's bundle.
     init(bundle: Bundle = Bundle.main, fileName: String, fileExtension: String) {
         guard let file = bundle.path(forResource: fileName,
                                           ofType: fileExtension) else {
@@ -39,6 +41,7 @@ class PersistenceHelper {
 
     // MARK: -
 
+    /// Saves the folders to the PersistenceHelper's JSON file.
     func save(folders: [Folder]) throws {
         guard let fileURL = fileURL else { throw PersistenceHelperError.fileNotAccessible }
 
@@ -47,6 +50,7 @@ class PersistenceHelper {
 
     }
 
+    /// Reads the folders from the PersistenceHelper's JSON file.
     func read() throws -> [Folder]  {
         guard let fileURL = fileURL else { throw PersistenceHelperError.fileNotAccessible }
 
