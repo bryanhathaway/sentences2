@@ -64,3 +64,5 @@ class GlassSwitchCell: GlassCell {
         titleLabel.text = nil
     }
 }
+
+extension GlassSwitchCell: SettingsConfigurableCell { }

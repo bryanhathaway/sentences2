@@ -57,6 +57,8 @@
 		93FF6E5921703699007AC46F /* FolderCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E5821703699007AC46F /* FolderCreatorView.swift */; };
 		93FF6E8F2176B14B007AC46F /* LanguageProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E8E2176B14B007AC46F /* LanguageProcessorTests.swift */; };
 		93FF6E972176B93D007AC46F /* PersistenceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E962176B93D007AC46F /* PersistenceHelperTests.swift */; };
+		93FF6E9A2176E59A007AC46F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E992176E59A007AC46F /* SettingsViewController.swift */; };
+		93FF6E9C2176F204007AC46F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E9B2176F204007AC46F /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		93FF6E8E2176B14B007AC46F /* LanguageProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageProcessorTests.swift; sourceTree = "<group>"; };
 		93FF6E902176B14B007AC46F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93FF6E962176B93D007AC46F /* PersistenceHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelperTests.swift; sourceTree = "<group>"; };
+		93FF6E992176E59A007AC46F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		93FF6E9B2176F204007AC46F /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,7 @@
 				93FF6E3021672914007AC46F /* PersistenceHelper.swift */,
 				93FF6E3421674155007AC46F /* MultipeerHandler.swift */,
 				93FF6E5421701E90007AC46F /* AccessControl.swift */,
+				93FF6E9B2176F204007AC46F /* Configuration.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 		93FF6E982176E573007AC46F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				93FF6E992176E59A007AC46F /* SettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -448,6 +454,7 @@
 				93FF6E1C21659788007AC46F /* BlurredBackgroundViewController.swift in Sources */,
 				93E979962161B46D00236B11 /* SentencesViewController.swift in Sources */,
 				93FF6E1F216599F5007AC46F /* GlassNavigationController.swift in Sources */,
+				93FF6E9A2176E59A007AC46F /* SettingsViewController.swift in Sources */,
 				93864F4721620150003F962B /* Box.swift in Sources */,
 				93FF6E2B2165E440007AC46F /* BoxCell.swift in Sources */,
 				93FF6E4B21700E4A007AC46F /* FolderSelectViewController.swift in Sources */,
@@ -466,6 +473,7 @@
 				93FF6E5921703699007AC46F /* FolderCreatorView.swift in Sources */,
 				93FF6E3121672914007AC46F /* PersistenceHelper.swift in Sources */,
 				93FF6E38216DAFC8007AC46F /* SendReceiveViewController.swift in Sources */,
+				93FF6E9C2176F204007AC46F /* Configuration.swift in Sources */,
 				93FF6E512170189E007AC46F /* GlassSwitchCell.swift in Sources */,
 				93FF6E5521701E90007AC46F /* AccessControl.swift in Sources */,
 				93FF6E252165DD1B007AC46F /* UIColor+Hex.swift in Sources */,
