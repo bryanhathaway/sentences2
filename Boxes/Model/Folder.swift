@@ -25,3 +25,11 @@ class Folder: Codable, HexColorable {
         colorHex = color.toHexString
     }
 }
+
+extension Folder: Equatable {
+    static func == (lhs: Folder, rhs: Folder) -> Bool {
+        return lhs.title == rhs.title &&
+        lhs.sentences == rhs.sentences &&
+        lhs.colorHex == rhs.colorHex
+    }
+}

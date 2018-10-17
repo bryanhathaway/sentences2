@@ -18,3 +18,10 @@ class Phrase: Codable, HexColorable {
         self.colorHex = color.toHexString
     }
 }
+
+extension Phrase: Equatable {
+    static func == (lhs: Phrase, rhs: Phrase) -> Bool {
+        return lhs.value == rhs.value &&
+        lhs.colorHex == rhs.colorHex
+    }
+}

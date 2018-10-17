@@ -36,3 +36,12 @@ extension Sentence {
         colorHex = sentence.colorHex
     }
 }
+
+extension Sentence: Equatable {
+    static func == (lhs: Sentence, rhs: Sentence) -> Bool {
+        return lhs.title == rhs.title &&
+        lhs.compiledSentence == rhs.compiledSentence &&
+        lhs.phrases == rhs.phrases &&
+        lhs.colorHex == rhs.colorHex
+    }
+}
