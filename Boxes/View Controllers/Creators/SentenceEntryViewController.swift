@@ -85,9 +85,8 @@ class SentenceEntryViewController: BlurredBackgroundViewController {
         // If compiled Sentence changed, then previous phrase data is overwritten.
         if sentence.compiledSentence != sentenceText {
             let words = LanguageProcessor.words(from: sentenceText)
-            let nonSpaces = words.filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
 
-            phrases = nonSpaces.map { Phrase(value: $0) }
+            phrases = words.map { Phrase(value: $0) }
 
         } else {
             phrases = sentence.phrases

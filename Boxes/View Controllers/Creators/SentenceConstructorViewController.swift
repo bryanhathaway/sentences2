@@ -131,9 +131,8 @@ class SentenceConstructorViewController: BlurredBackgroundViewController {
 
         let phrase = sentence.phrases[indexPath.row]
         let words = LanguageProcessor.words(from: phrase.value)
-        let nonSpaces = words.filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
 
-        let newPhrases = nonSpaces.map { Phrase(value: $0) }
+        let newPhrases = words.map { Phrase(value: $0) }
         sentence.phrases.remove(at: indexPath.row)
         sentence.phrases.insert(contentsOf: newPhrases, at: indexPath.row)
 

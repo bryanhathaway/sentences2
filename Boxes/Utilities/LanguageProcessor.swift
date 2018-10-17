@@ -9,7 +9,7 @@
 import Foundation
 
 class LanguageProcessor {
-    static func words(from string: String) -> [String] {
+    static func words(from string: String, includeWhiteSpace: Bool = false) -> [String] {
         let tagger = NSLinguisticTagger(tagSchemes:[.tokenType, .lexicalClass], options: 0)
         tagger.string = string
 
@@ -22,6 +22,10 @@ class LanguageProcessor {
             words.append(word)
         }
 
-        return words
+        guard !includeWhiteSpace else { return words }
+
+        let nonSpaces = words.filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+        
+        return nonSpaces
     }
 }
