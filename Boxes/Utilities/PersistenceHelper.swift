@@ -14,11 +14,13 @@ enum PersistenceHelperError: Error {
 
 /// A helper class that manages the saving, reading, and converting of Folder data.
 class PersistenceHelper {
-    static let shared = PersistenceHelper()
+    static let shared = PersistenceHelper(fileName: Constants.savedDataFileName)
 
-    private var fileURL: URL? {
+    private var fileURL: URL?
+
+    init(fileName: String) {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths.first?.appendingPathComponent(Constants.savedDataFileName)
+        fileURL = paths.first?.appendingPathComponent(fileName)
     }
 
     func save(folders: [Folder]) throws {
