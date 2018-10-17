@@ -219,8 +219,9 @@
 				93FF6E08216443E2007AC46F /* FoldersViewController.swift */,
 				93E979952161B46D00236B11 /* SentencesViewController.swift */,
 				93E979972161B46D00236B11 /* DetailViewController.swift */,
+				93FF6E982176E573007AC46F /* Settings */,
 				93FF6E262165E111007AC46F /* Creators */,
-				93FF6E36216DA3A1007AC46F /* Multipeer */,
+				93FF6E36216DA3A1007AC46F /* Sharing */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -285,14 +286,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		93FF6E36216DA3A1007AC46F /* Multipeer */ = {
+		93FF6E36216DA3A1007AC46F /* Sharing */ = {
 			isa = PBXGroup;
 			children = (
 				93FF6E37216DAFC8007AC46F /* SendReceiveViewController.swift */,
 				93FF6E4921700E3A007AC46F /* Send */,
 				93FF6E4721700E2A007AC46F /* Receive */,
 			);
-			path = Multipeer;
+			path = Sharing;
 			sourceTree = "<group>";
 		};
 		93FF6E4721700E2A007AC46F /* Receive */ = {
@@ -322,6 +323,13 @@
 				93FF6E902176B14B007AC46F /* Info.plist */,
 			);
 			path = BoxesTests;
+			sourceTree = "<group>";
+		};
+		93FF6E982176E573007AC46F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
