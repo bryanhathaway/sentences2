@@ -56,6 +56,7 @@
 		93FF6E57217032F0007AC46F /* FolderCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E56217032F0007AC46F /* FolderCreatorViewController.swift */; };
 		93FF6E5921703699007AC46F /* FolderCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E5821703699007AC46F /* FolderCreatorView.swift */; };
 		93FF6E8F2176B14B007AC46F /* LanguageProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E8E2176B14B007AC46F /* LanguageProcessorTests.swift */; };
+		93FF6E972176B93D007AC46F /* PersistenceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E962176B93D007AC46F /* PersistenceHelperTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		93FF6E8C2176B14B007AC46F /* BoxesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FF6E8E2176B14B007AC46F /* LanguageProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageProcessorTests.swift; sourceTree = "<group>"; };
 		93FF6E902176B14B007AC46F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93FF6E962176B93D007AC46F /* PersistenceHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				93FF6E8E2176B14B007AC46F /* LanguageProcessorTests.swift */,
+				93FF6E962176B93D007AC46F /* PersistenceHelperTests.swift */,
 				93FF6E902176B14B007AC46F /* Info.plist */,
 			);
 			path = BoxesTests;
@@ -475,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FF6E8F2176B14B007AC46F /* LanguageProcessorTests.swift in Sources */,
+				93FF6E972176B93D007AC46F /* PersistenceHelperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
