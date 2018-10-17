@@ -59,4 +59,11 @@ class PersistenceHelper {
 
         return object
     }
+
+    /// Deletes the PersistenceHelper's file
+    func delete() throws {
+        guard let fileURL = fileURL else { throw PersistenceHelperError.fileNotAccessible }
+
+        try FileManager.default.removeItem(at: fileURL)
+    }
 }
