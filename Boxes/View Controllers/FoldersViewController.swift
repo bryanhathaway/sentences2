@@ -42,12 +42,12 @@ class FoldersViewController: BlurredBackgroundViewController {
 
     private func loadFolders() {
         do {
-            let folders = try PersistenceHelper.shared.readFolders()
+            let folders = try PersistenceHelper.userStorage.read()
             self.folders = folders
 
         } catch {
             // Load default Folders
-            let defaults = try? PersistenceHelper.shared.readDefaultFolders()
+            let defaults = try? PersistenceHelper.default.read()
             self.folders = defaults ?? []
         }
 
@@ -100,7 +100,7 @@ class FoldersViewController: BlurredBackgroundViewController {
         presentFolderEditor(folder: Folder()) { [unowned self] folder in
             self.folders.append(folder)
             self.tableView.reloadData()
-            try? PersistenceHelper.shared.save(folders: self.folders)
+            try? PersistenceHelper.userStorage.save(folders: self.folders)
             self.splitViewController?.toggleMasterDisplayed()
         }
     }
@@ -108,7 +108,7 @@ class FoldersViewController: BlurredBackgroundViewController {
     private func edit(folder: Folder) {
         presentFolderEditor(folder: folder, title: "Edit Folder") { [unowned self] folder in
             self.tableView.reloadData()
-            try? PersistenceHelper.shared.save(folders: self.folders)
+            try? PersistenceHelper.userStorage.save(folders: self.folders)
             self.splitViewController?.toggleMasterDisplayed()
         }
     }
@@ -136,7 +136,7 @@ class FoldersViewController: BlurredBackgroundViewController {
             let newFolders = data.overwrite ? data.folders : self.mergedFolders(newFolders: data.folders)
             AccessControl.isReadOnly = data.isReadOnly
 
-            try? PersistenceHelper.shared.save(folders: newFolders)
+            try? PersistenceHelper.userStorage.save(folders: newFolders)
             self.folders = newFolders
             self.tableView.reloadData()
             self.splitViewController?.toggleMasterDisplayed()
@@ -218,7 +218,7 @@ extension FoldersViewController: UITableViewDataSource, UITableViewDelegate {
 
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [unowned self] (action, path) in
             self.folders.remove(at: path.row)
-            try? PersistenceHelper.shared.save(folders: self.folders)
+            try? PersistenceHelper.userStorage.save(folders: self.folders)
             self.tableView.deleteRows(at: [path], with: .automatic)
         }
 
@@ -229,7 +229,7 @@ extension FoldersViewController: UITableViewDataSource, UITableViewDelegate {
 extension FoldersViewController: SentencesDelegate {
     func sentencesController(_ controller: SentencesViewController, didChangeContentsOf folder: Folder) {
         // TODO: Error Handling
-        try? PersistenceHelper.shared.save(folders: folders)
+        try? PersistenceHelper.userStorage.save(folders: folders)
         tableView.reloadData()
     }
 }

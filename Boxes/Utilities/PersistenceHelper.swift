@@ -14,14 +14,30 @@ enum PersistenceHelperError: Error {
 
 /// A helper class that manages the saving, reading, and converting of Folder data.
 class PersistenceHelper {
-    static let shared = PersistenceHelper(fileName: Constants.savedDataFileName)
+    /// The default PersistenceHelper that reads default example Folders packaged with the app Bundle.
+    static let `default` = PersistenceHelper(fileName: Constants.defaultDataFileName,
+                                             fileExtension: Constants.defaultDataFileType)
+
+    /// A PersistenceHelper that saves and reads to a standard JSON file.
+    static let userStorage = PersistenceHelper(fileNameWithExtension: Constants.savedDataFileName)
 
     private var fileURL: URL?
 
-    init(fileName: String) {
+    init(fileNameWithExtension: String) {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        fileURL = paths.first?.appendingPathComponent(fileName)
+        fileURL = paths.first?.appendingPathComponent(fileNameWithExtension)
     }
+
+    init(bundle: Bundle = Bundle.main, fileName: String, fileExtension: String) {
+        guard let file = bundle.path(forResource: fileName,
+                                          ofType: fileExtension) else {
+                                           return
+        }
+
+        fileURL = URL(fileURLWithPath: file)
+    }
+
+    // MARK: -
 
     func save(folders: [Folder]) throws {
         guard let fileURL = fileURL else { throw PersistenceHelperError.fileNotAccessible }
@@ -31,29 +47,12 @@ class PersistenceHelper {
 
     }
 
-    func readFolders() throws -> [Folder]  {
+    func read() throws -> [Folder]  {
         guard let fileURL = fileURL else { throw PersistenceHelperError.fileNotAccessible }
 
         let data = try Data(contentsOf: fileURL)
         let object = try JSONDecoder().decode([Folder].self, from: data)
 
         return object
-    }
-
-    func readDefaultFolders() throws -> [Folder] {
-        guard let file = Bundle.main.path(forResource: Constants.defaultDataFileName,
-                                          ofType: Constants.defaultDataFileType) else {
-                                            return []
-        }
-
-        let path = URL(fileURLWithPath: file)
-        let data = try Data(contentsOf: path)
-        let folders = try JSONDecoder().decode([Folder].self, from: data)
-
-        return folders
-    }
-
-    func json(from folders: [Folder]) -> Data? {
-        return nil
     }
 }
