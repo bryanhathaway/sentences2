@@ -93,6 +93,7 @@ class BoxViewController: BlurredBackgroundViewController {
         let box = Box(string: phrase.value)
         box.label.font = configuration.font
         box.backgroundColor = phrase.color
+        box.talkOnTouchBegan = configuration.isTapToSpeakEnabled
         return box
     }
 

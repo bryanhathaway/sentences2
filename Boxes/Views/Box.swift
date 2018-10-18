@@ -35,6 +35,8 @@ class Box: UIView {
 
     weak var layoutEngine: LayoutEngine?
 
+    var talkOnTouchBegan: Bool = false
+
     override var backgroundColor: UIColor? {
         get {
             return backgroundView.backgroundColor
@@ -153,6 +155,11 @@ class Box: UIView {
         BoxHapticEngine.shared.impact()
         BoxHapticEngine.shared.prepare()
 
+        if talkOnTouchBegan, let string = label.text {
+            DispatchQueue.main.async {
+                TextToSpeech.shared.speak(text: string.lowercased())
+            }
+        }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
