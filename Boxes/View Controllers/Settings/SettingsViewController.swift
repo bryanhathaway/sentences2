@@ -20,7 +20,7 @@ class SettingsViewController: GlassTableViewController {
 
         title = "Settings"
 
-        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        let cancelItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(cancelTapped))
         navigationItem.leftBarButtonItem = cancelItem
     }
 
