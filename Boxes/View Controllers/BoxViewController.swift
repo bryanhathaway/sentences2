@@ -91,7 +91,7 @@ class BoxViewController: BlurredBackgroundViewController {
 
     private func box(for phrase: Phrase) -> Box {
         let box = Box(string: phrase.value)
-        box.label.font = configuration.font
+        box.label.font = configuration.font(ofSize: box.label.font.pointSize)
         box.backgroundColor = phrase.color
         box.talkOnTouchBegan = configuration.isTapToSpeakEnabled
         return box
