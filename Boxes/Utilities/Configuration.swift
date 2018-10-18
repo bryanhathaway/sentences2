@@ -11,11 +11,14 @@ import UIKit
 
 class Configuration {
 
+    // MARK: Font
     var font: UIFont = UIFont.preferredFont(forTextStyle: .body)
+
     func font(ofSize size: CGFloat) -> UIFont {
         return UIFont(name: font.fontName, size: size) ?? .systemFont(ofSize: size)
     }
 
+    // MARK: 
     var isTapToSpeakEnabled: Bool = false
 
     var defaultBoxColor: UIColor = Theme.Box.background
