@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let splitViewController = UISplitViewController()
 
-        let detailController = DetailViewController(configuration: configuration)
+        let detailController = BoxViewController(configuration: configuration)
         detailController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         let detailNav = GlassNavigationController(rootViewController: detailController)
 

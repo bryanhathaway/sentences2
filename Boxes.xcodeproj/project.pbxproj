@@ -15,7 +15,7 @@
 		93DCF302216434BC000F4D43 /* BounceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DCF301216434BC000F4D43 /* BounceGestureRecognizer.swift */; };
 		93E979942161B46D00236B11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E979932161B46D00236B11 /* AppDelegate.swift */; };
 		93E979962161B46D00236B11 /* SentencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E979952161B46D00236B11 /* SentencesViewController.swift */; };
-		93E979982161B46D00236B11 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E979972161B46D00236B11 /* DetailViewController.swift */; };
+		93E979982161B46D00236B11 /* BoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E979972161B46D00236B11 /* BoxViewController.swift */; };
 		93E9799D2161B46E00236B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93E9799C2161B46E00236B11 /* Assets.xcassets */; };
 		93E979A02161B46E00236B11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93E9799E2161B46E00236B11 /* LaunchScreen.storyboard */; };
 		93E979A92161BAA200236B11 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E979A82161BAA200236B11 /* Folder.swift */; };
@@ -86,7 +86,7 @@
 		93E979902161B46D00236B11 /* Boxes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boxes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E979932161B46D00236B11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93E979952161B46D00236B11 /* SentencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentencesViewController.swift; sourceTree = "<group>"; };
-		93E979972161B46D00236B11 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		93E979972161B46D00236B11 /* BoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewController.swift; sourceTree = "<group>"; };
 		93E9799C2161B46E00236B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93E9799F2161B46E00236B11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93E979A12161B46E00236B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 				93FF6E1D216599E6007AC46F /* Base Classes */,
 				93FF6E08216443E2007AC46F /* FoldersViewController.swift */,
 				93E979952161B46D00236B11 /* SentencesViewController.swift */,
-				93E979972161B46D00236B11 /* DetailViewController.swift */,
+				93E979972161B46D00236B11 /* BoxViewController.swift */,
 				93FF6E982176E573007AC46F /* Settings */,
 				93FF6E262165E111007AC46F /* Creators */,
 				93FF6E36216DA3A1007AC46F /* Sharing */,
@@ -461,7 +461,7 @@
 				93FF6E40216DD339007AC46F /* SendingViewController.swift in Sources */,
 				93FF6EA02177FBA8007AC46F /* GlassChevronCell.swift in Sources */,
 				93E979A92161BAA200236B11 /* Folder.swift in Sources */,
-				93E979982161B46D00236B11 /* DetailViewController.swift in Sources */,
+				93E979982161B46D00236B11 /* BoxViewController.swift in Sources */,
 				93FF6E1421647C67007AC46F /* UIView+Animation.swift in Sources */,
 				93FF6E53217018B9007AC46F /* GlassLabelCell.swift in Sources */,
 				93FF6EA221780A8F007AC46F /* CreditsViewController.swift in Sources */,

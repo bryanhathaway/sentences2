@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  BoxViewController.swift
 //  Boxes
 //
 //  Created by Bryan Hathaway on 1/10/18.
@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class DetailViewController: BlurredBackgroundViewController {
+class BoxViewController: BlurredBackgroundViewController {
 
     private var boxes: [UIView] = []
     private var sentence: Sentence?

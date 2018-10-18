@@ -170,13 +170,13 @@ extension SentencesViewController: UITableViewDataSource, UITableViewDelegate {
         let sentence = sentences[indexPath.row]
 
         if splitViewController.isCollapsed {
-            let controller = DetailViewController(configuration: configuration)
+            let controller = BoxViewController(configuration: configuration)
             show(controller, sender: nil)
             controller.setSentence(sentence)
 
         } else {
             guard let nav = splitViewController.viewControllers.last as? UINavigationController else { return }
-            guard let controller = nav.topViewController as? DetailViewController else { return }
+            guard let controller = nav.topViewController as? BoxViewController else { return }
             controller.setSentence(sentence)
         }
     }
