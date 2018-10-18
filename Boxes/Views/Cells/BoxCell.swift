@@ -32,7 +32,7 @@ class BoxCell: UICollectionViewCell {
 
         backgroundColor = Theme.Box.background
 
-        label.font = Box.compactFont
+        label.font = UIFont.systemFont(ofSize: Box.compactFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = Theme.Box.text
@@ -58,7 +58,8 @@ class BoxCell: UICollectionViewCell {
         super.traitCollectionDidChange(previousTraitCollection)
 
         let isCompactWidth = traitCollection.horizontalSizeClass == .compact
-        label.font = isCompactWidth ? Box.compactFont : Box.regularFont
+        let size = isCompactWidth ? Box.compactFontSize : Box.regularFontSize
+        label.font = UIFont(name: label.font.fontName, size: size)
 
         invalidateIntrinsicContentSize()
     }
