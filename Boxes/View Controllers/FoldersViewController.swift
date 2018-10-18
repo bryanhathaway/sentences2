@@ -90,14 +90,9 @@ class FoldersViewController: BlurredBackgroundViewController {
         let config = Configuration()
         let controller = SettingsViewController(configuration: config)
         let nav = GlassNavigationController(rootViewController: controller)
-        present(nav, animated: true, completion: nil)
-        //TODO: Move credits into settings screen.
-        //TODO: Make links tappable
-//        let message = "Project is open sourced on GitHub www.github.com/bryanhathaway/sentences2\n\nIcons by www.icons8.com"
-//        let controller = UIAlertController(title: "Credits", message: message, preferredStyle: .alert)
-//        controller.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-//        
-//        present(controller, animated: true, completion: nil)
+        nav.modalPresentationStyle = .formSheet
+        nav.preferredContentSize = CGSize(width: 320, height: 480)
+        splitViewController?.present(nav, animated: true, completion: nil)
     }
 
     @objc private func addTapped(_ sender: Any) {

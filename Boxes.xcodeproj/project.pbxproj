@@ -60,6 +60,8 @@
 		93FF6E9A2176E59A007AC46F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E992176E59A007AC46F /* SettingsViewController.swift */; };
 		93FF6E9C2176F204007AC46F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E9B2176F204007AC46F /* Configuration.swift */; };
 		93FF6E9E21770B91007AC46F /* ConfigurationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E9D21770B91007AC46F /* ConfigurationOption.swift */; };
+		93FF6EA02177FBA8007AC46F /* GlassChevronCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E9F2177FBA8007AC46F /* GlassChevronCell.swift */; };
+		93FF6EA221780A8F007AC46F /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6EA121780A8F007AC46F /* CreditsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +132,8 @@
 		93FF6E992176E59A007AC46F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		93FF6E9B2176F204007AC46F /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		93FF6E9D21770B91007AC46F /* ConfigurationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationOption.swift; sourceTree = "<group>"; };
+		93FF6E9F2177FBA8007AC46F /* GlassChevronCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassChevronCell.swift; sourceTree = "<group>"; };
+		93FF6EA121780A8F007AC46F /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +292,7 @@
 				93FF6E2A2165E440007AC46F /* BoxCell.swift */,
 				93FF6E3D216DC899007AC46F /* GlassCell.swift */,
 				93FF6E52217018B9007AC46F /* GlassLabelCell.swift */,
+				93FF6E9F2177FBA8007AC46F /* GlassChevronCell.swift */,
 				93FF6E502170189E007AC46F /* GlassSwitchCell.swift */,
 			);
 			path = Cells;
@@ -337,6 +342,7 @@
 			children = (
 				93FF6E992176E59A007AC46F /* SettingsViewController.swift */,
 				93FF6E9D21770B91007AC46F /* ConfigurationOption.swift */,
+				93FF6EA121780A8F007AC46F /* CreditsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -446,10 +452,12 @@
 				93FF6E12216479C4007AC46F /* LayoutEngine.swift in Sources */,
 				93FF6E3A216DBDF7007AC46F /* PeerPickerViewController.swift in Sources */,
 				93FF6E40216DD339007AC46F /* SendingViewController.swift in Sources */,
+				93FF6EA02177FBA8007AC46F /* GlassChevronCell.swift in Sources */,
 				93E979A92161BAA200236B11 /* Folder.swift in Sources */,
 				93E979982161B46D00236B11 /* DetailViewController.swift in Sources */,
 				93FF6E1421647C67007AC46F /* UIView+Animation.swift in Sources */,
 				93FF6E53217018B9007AC46F /* GlassLabelCell.swift in Sources */,
+				93FF6EA221780A8F007AC46F /* CreditsViewController.swift in Sources */,
 				93FF6E3C216DC511007AC46F /* GlassTableViewController.swift in Sources */,
 				93DCF2FE21634538000F4D43 /* IconDetailCell.swift in Sources */,
 				93FF6E282165E12D007AC46F /* SentenceConstructorViewController.swift in Sources */,

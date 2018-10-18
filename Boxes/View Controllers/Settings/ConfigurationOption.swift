@@ -9,38 +9,45 @@
 import Foundation
 import UIKit
 
-protocol SettingsConfigurableCell {
+protocol TitleConfigurableCell {
     var titleLabel: UILabel { get }
+}
+
+protocol SubtitleConfigurableCell {
     var subtitleLabel: UILabel { get }
 }
 
 class ConfigurationOption {
     let title: String
-    let subtitle: String
+    let subtitle: String?
     class var reuseIdentifier: String {
         return "OptionCell"
     }
 
-    init(title: String, subtitle: String) {
+    init(title: String, subtitle: String?) {
         self.title = title
         self.subtitle = subtitle
     }
 
-    func configure(cell: SettingsConfigurableCell) {
-        cell.titleLabel.text = title
-        cell.subtitleLabel.text = subtitle
+    func configure(cell: UITableViewCell) {
+        if let cell = cell as? TitleConfigurableCell {
+            cell.titleLabel.text = title
+        }
+        if let cell = cell as? SubtitleConfigurableCell {
+            cell.subtitleLabel.text = subtitle
+        }
     }
 }
 
 class SwitchOption: ConfigurationOption {
-    var getter: (() -> (Bool))?
-    var setter: ((Bool) -> ())?
-
     override class var reuseIdentifier: String {
         return "SwitchCell"
     }
 
-    override func configure(cell: SettingsConfigurableCell) {
+    var getter: (() -> (Bool))?
+    var setter: ((Bool) -> ())?
+
+    override func configure(cell: UITableViewCell) {
         super.configure(cell: cell)
         guard let cell = cell as? GlassSwitchCell else { return }
 
@@ -55,3 +62,22 @@ class SwitchOption: ConfigurationOption {
 
     }
 }
+
+class SelectableOption: ConfigurationOption {
+    override class var reuseIdentifier: String {
+        return "ChevronCell"
+    }
+
+    typealias SelectionHandler = (() -> ())
+    var onSelection: SelectionHandler
+
+    init(title: String, onSelection: @escaping SelectionHandler) {
+        self.onSelection = onSelection
+        super.init(title: title, subtitle: nil)
+
+    }
+}
+
+
+extension GlassSwitchCell: TitleConfigurableCell, SubtitleConfigurableCell { }
+extension GlassChevronCell: TitleConfigurableCell { }
