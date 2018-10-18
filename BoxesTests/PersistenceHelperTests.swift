@@ -11,11 +11,11 @@ import XCTest
 
 class PersistenceHelperTests: XCTestCase {
     lazy var testableHelper = {
-        return PersistenceHelper(fileNameWithExtension: "testableFile.json")
+        return PersistenceHelper<[Folder]>(fileNameWithExtension: "testableFile.json")
     }()
 
     func testCanRetrieveDefaultFolders() {
-        let helper = PersistenceHelper.default
+        let helper = Persistence.default
 
         let folders = try? helper.read()
 
