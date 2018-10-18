@@ -142,6 +142,7 @@ class FoldersViewController: BlurredBackgroundViewController {
         controller.completion = { [unowned self] data in
             let newFolders = data.overwrite ? data.folders : self.mergedFolders(newFolders: data.folders)
             self.configuration.isReadOnlyMode = data.isReadOnly
+            try? Persistence.configStorage.save(data: self.configuration)
 
             try? Persistence.userStorage.save(data: newFolders)
             self.folders = newFolders
