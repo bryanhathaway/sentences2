@@ -28,24 +28,30 @@ class TextToSpeech: NSObject {
         synthesizer.delegate = self
     }
 
-    func speak(text: String, completion: (() ->())? = nil) {
-        let availableVoices = AVSpeechSynthesisVoice.speechVoices().filter { $0.quality == .enhanced }
-        onFinish = completion
-        guard availableVoices.count > 0 else {
-            // Failsafe, play using locale
-            guard let language = NSLocale.preferredLanguages.first else { return }
-            guard let voice = AVSpeechSynthesisVoice(language: language) else { return }
-            speak(text: text, using: voice)
+    private lazy var voice: AVSpeechSynthesisVoice? = {
+        let enhancedVoices = AVSpeechSynthesisVoice.speechVoices().filter { $0.quality == .enhanced }
 
+        guard enhancedVoices.count > 0 else {
+            guard let language = NSLocale.preferredLanguages.first else { return nil }
+            return AVSpeechSynthesisVoice(language: language)
+        }
+
+        // Siri voices are best quality, use if found
+        if let siriVoice = enhancedVoices.first(where: { $0.identifier.contains("siri") }) {
+            return siriVoice
+        } else {
+            return enhancedVoices.first
+        }
+    }()
+
+    /// Speaks the given text. If there is already speech active, it will finish before this call begins.
+    func speak(text: String, completion: (() ->())? = nil) {
+        guard let voice = voice else {
+            completion?()
             return
         }
-
-        if let siriVoice = availableVoices.first(where: { $0.identifier.contains("siri") }) {
-            speak(text: text, using: siriVoice)
-        } else {
-            guard let firstVoice = availableVoices.first else { return }
-            speak(text: text, using: firstVoice)
-        }
+        onFinish = completion
+        speak(text: text, using: voice)
     }
 
     func stop() {
@@ -60,7 +66,7 @@ class TextToSpeech: NSObject {
 
         try? audioSession.setCategory(AVAudioSession.Category.playback,
                                       mode: AVAudioSession.Mode.default,
-                                      options: AVAudioSession.CategoryOptions.duckOthers)
+                                      options: AVAudioSession.CategoryOptions.mixWithOthers)
         try? audioSession.setActive(true, options: [])
         synthesizer.speak(utterance)
     }

@@ -8,18 +8,26 @@
 
 import Foundation
 
+// This is just do allow us to use these static properties as they can't be attached to the generic class.
+struct Persistence {
+    /// The default PersistenceHelper that reads default example Folders packaged with the app Bundle.
+    static let `default` = PersistenceHelper<[Folder]>(fileName: Constants.defaultDataFileName,
+                                             fileExtension: Constants.defaultDataFileType)
+
+    /// A PersistenceHelper that saves and reads Folders to a standard JSON file.
+    static let userStorage = PersistenceHelper<[Folder]>(fileNameWithExtension: Constants.savedDataFileName)
+
+    /// A PersistenceHelper that saves and reads Config to a standard JSON File
+    /// This data is separate from userStorage as that data may be quite large and isn't required at app launch.
+    static let configStorage = PersistenceHelper<Configuration>(fileNameWithExtension: Constants.savedConfigurationFileName)
+}
+
 enum PersistenceHelperError: Error {
     case fileNotAccessible
 }
 
 /// A helper class that manages the saving, reading, and converting of Folder data.
-class PersistenceHelper {
-    /// The default PersistenceHelper that reads default example Folders packaged with the app Bundle.
-    static let `default` = PersistenceHelper(fileName: Constants.defaultDataFileName,
-                                             fileExtension: Constants.defaultDataFileType)
-
-    /// A PersistenceHelper that saves and reads to a standard JSON file.
-    static let userStorage = PersistenceHelper(fileNameWithExtension: Constants.savedDataFileName)
+class PersistenceHelper<T: Codable> {
 
     private var fileURL: URL?
 
@@ -42,20 +50,20 @@ class PersistenceHelper {
     // MARK: -
 
     /// Saves the folders to the PersistenceHelper's JSON file.
-    func save(folders: [Folder]) throws {
+    func save(data: T) throws {
         guard let fileURL = fileURL else { throw PersistenceHelperError.fileNotAccessible }
 
-        let encoded = try JSONEncoder().encode(folders)
+        let encoded = try JSONEncoder().encode(data)
         try encoded.write(to: fileURL)
 
     }
 
     /// Reads the folders from the PersistenceHelper's JSON file.
-    func read() throws -> [Folder]  {
+    func read() throws -> T  {
         guard let fileURL = fileURL else { throw PersistenceHelperError.fileNotAccessible }
 
         let data = try Data(contentsOf: fileURL)
-        let object = try JSONDecoder().decode([Folder].self, from: data)
+        let object = try JSONDecoder().decode(T.self, from: data)
 
         return object
     }

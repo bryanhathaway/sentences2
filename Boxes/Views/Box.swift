@@ -24,16 +24,18 @@ fileprivate class BoxHapticEngine {
 }
 
 class Box: UIView {
-    static let compactFont = UIFont.systemFont(ofSize: 25.0)
-    static let regularFont = UIFont.systemFont(ofSize: 40.0)
+    static let compactFontSize: CGFloat = 25.0
+    static let regularFontSize: CGFloat = 40.0
 
-    private let label = UILabel()
+    let label = UILabel()
     private let backgroundView = UIView()
 
     private let verticalPadding: CGFloat
     private let horizontalPadding: CGFloat
 
     weak var layoutEngine: LayoutEngine?
+
+    var talkOnTouchBegan: Bool = false
 
     override var backgroundColor: UIColor? {
         get {
@@ -67,7 +69,7 @@ class Box: UIView {
         layer.shadowRadius = 0.0
 
         label.text = string
-        label.font = Box.compactFont
+        label.font = UIFont.systemFont(ofSize: Box.compactFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = Theme.Box.text
@@ -91,7 +93,8 @@ class Box: UIView {
         super.traitCollectionDidChange(previousTraitCollection)
 
         let isCompactWidth = traitCollection.horizontalSizeClass == .compact
-        label.font = isCompactWidth ? Box.compactFont : Box.regularFont
+        let size = isCompactWidth ? Box.compactFontSize : Box.regularFontSize
+        label.font = UIFont(name: label.font.fontName, size: size)
 
         invalidateIntrinsicContentSize()
     }
@@ -152,6 +155,11 @@ class Box: UIView {
         BoxHapticEngine.shared.impact()
         BoxHapticEngine.shared.prepare()
 
+        if talkOnTouchBegan, let string = label.text {
+            DispatchQueue.main.async {
+                TextToSpeech.shared.speak(text: string.lowercased())
+            }
+        }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  BoxViewController.swift
 //  Boxes
 //
 //  Created by Bryan Hathaway on 1/10/18.
@@ -9,14 +9,18 @@
 import UIKit
 import AVFoundation
 
-class DetailViewController: BlurredBackgroundViewController {
+class BoxViewController: BlurredBackgroundViewController {
 
     private var boxes: [UIView] = []
     private var sentence: Sentence?
     private let canvas = UIView()
     private let engine: LayoutEngine
 
-    init() {
+    var configuration: Configuration
+
+    init(configuration: Configuration) {
+        self.configuration = configuration
+
         engine = LayoutEngine(canvas: canvas)
 
         super.init(nibName: nil, bundle: nil)
@@ -87,7 +91,9 @@ class DetailViewController: BlurredBackgroundViewController {
 
     private func box(for phrase: Phrase) -> Box {
         let box = Box(string: phrase.value)
+        box.label.font = configuration.font(ofSize: box.label.font.pointSize)
         box.backgroundColor = phrase.color
+        box.talkOnTouchBegan = configuration.isTapToSpeakEnabled
         return box
     }
 

@@ -21,14 +21,17 @@ class SentencesViewController: BlurredBackgroundViewController {
     }
 
     private let tableView = UITableView(frame: .zero, style: .plain)
+    private let configuration: Configuration
 
-    init(folder: Folder) {
+    init(folder: Folder, configuration: Configuration) {
+        self.configuration = configuration
         self.folder = folder
+
         super.init(nibName: nil, bundle: nil)
 
         title = folder.title
 
-        if !AccessControl.isReadOnly {
+        if !configuration.isReadOnlyMode {
             let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
             navigationItem.rightBarButtonItem = addButton
         }
@@ -134,6 +137,7 @@ extension SentencesViewController: UITableViewDataSource, UITableViewDelegate {
 
         let sentence = sentences[indexPath.row]
         cell.titleLabel.text = sentence.title
+        cell.titleLabel.font = configuration.font(ofSize: cell.titleLabel.font.pointSize)
         cell.detailLabel.text = sentence.compiledSentence
         cell.sideColor = sentence.color
 
@@ -144,7 +148,7 @@ extension SentencesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard !AccessControl.isReadOnly else { return [] }
+        guard !configuration.isReadOnlyMode else { return [] }
 
         let editAction = UITableViewRowAction(style: .normal, title: "Edit") { [weak self] (action, indexPath) in
             self?.editSentence(at: indexPath.row)
@@ -166,13 +170,13 @@ extension SentencesViewController: UITableViewDataSource, UITableViewDelegate {
         let sentence = sentences[indexPath.row]
 
         if splitViewController.isCollapsed {
-            let controller = DetailViewController()
+            let controller = BoxViewController(configuration: configuration)
             show(controller, sender: nil)
             controller.setSentence(sentence)
 
         } else {
             guard let nav = splitViewController.viewControllers.last as? UINavigationController else { return }
-            guard let controller = nav.topViewController as? DetailViewController else { return }
+            guard let controller = nav.topViewController as? BoxViewController else { return }
             controller.setSentence(sentence)
         }
     }

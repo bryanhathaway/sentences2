@@ -12,8 +12,11 @@ import UIKit
 class FoldersViewController: BlurredBackgroundViewController {
     var folders: [Folder] = []
     let tableView = UITableView(frame: .zero, style: .plain)
+    let configuration: Configuration
 
-    init() {
+    init(configuration: Configuration) {
+        self.configuration = configuration
+
         super.init(nibName: nil, bundle: nil)
 
         title = "Folders"
@@ -29,8 +32,8 @@ class FoldersViewController: BlurredBackgroundViewController {
         let shareButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_share"), style: .plain, target: self, action: #selector(shareTapped))
         navigationItem.rightBarButtonItems = [shareButton]
 
-        if !AccessControl.isReadOnly {
-            let settingsItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_help"), style: .plain, target: self, action: #selector(settingsTapped))
+        if !configuration.isReadOnlyMode {
+            let settingsItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_settings"), style: .plain, target: self, action: #selector(settingsTapped))
             navigationItem.leftBarButtonItem = settingsItem
 
             let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
@@ -42,12 +45,12 @@ class FoldersViewController: BlurredBackgroundViewController {
 
     private func loadFolders() {
         do {
-            let folders = try PersistenceHelper.userStorage.read()
+            let folders = try Persistence.userStorage.read()
             self.folders = folders
 
         } catch {
             // Load default Folders
-            let defaults = try? PersistenceHelper.default.read()
+            let defaults = try? Persistence.default.read()
             self.folders = defaults ?? []
         }
 
@@ -87,20 +90,24 @@ class FoldersViewController: BlurredBackgroundViewController {
     }
 
     @objc func settingsTapped() {
-        //TODO: Move credits into settings screen.
-        //TODO: Make links tappable
-        let message = "Project is open sourced on GitHub www.github.com/bryanhathaway/sentences2\n\nIcons by www.icons8.com"
-        let controller = UIAlertController(title: "Credits", message: message, preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-        
-        present(controller, animated: true, completion: nil)
+        let controller = SettingsViewController(configuration: configuration)
+        controller.onFinish = { [unowned self] in
+            self.tableView.reloadData()
+            self.splitViewController?.toggleMasterDisplayed()
+            try? Persistence.configStorage.save(data: self.configuration)
+        }
+
+        let nav = GlassNavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .formSheet
+        nav.preferredContentSize = CGSize(width: 320, height: 480)
+        splitViewController?.present(nav, animated: true, completion: nil)
     }
 
     @objc private func addTapped(_ sender: Any) {
         presentFolderEditor(folder: Folder()) { [unowned self] folder in
             self.folders.append(folder)
             self.tableView.reloadData()
-            try? PersistenceHelper.userStorage.save(folders: self.folders)
+            try? Persistence.userStorage.save(data: self.folders)
             self.splitViewController?.toggleMasterDisplayed()
         }
     }
@@ -108,7 +115,7 @@ class FoldersViewController: BlurredBackgroundViewController {
     private func edit(folder: Folder) {
         presentFolderEditor(folder: folder, title: "Edit Folder") { [unowned self] folder in
             self.tableView.reloadData()
-            try? PersistenceHelper.userStorage.save(folders: self.folders)
+            try? Persistence.userStorage.save(data: self.folders)
             self.splitViewController?.toggleMasterDisplayed()
         }
     }
@@ -131,12 +138,13 @@ class FoldersViewController: BlurredBackgroundViewController {
     }
 
     @objc func shareTapped() {
-        let controller = SendReceiveViewController()
+        let controller = SendReceiveViewController(configuration: configuration)
         controller.completion = { [unowned self] data in
             let newFolders = data.overwrite ? data.folders : self.mergedFolders(newFolders: data.folders)
-            AccessControl.isReadOnly = data.isReadOnly
+            self.configuration.isReadOnlyMode = data.isReadOnly
+            try? Persistence.configStorage.save(data: self.configuration)
 
-            try? PersistenceHelper.userStorage.save(folders: newFolders)
+            try? Persistence.userStorage.save(data: newFolders)
             self.folders = newFolders
             self.tableView.reloadData()
             self.splitViewController?.toggleMasterDisplayed()
@@ -191,6 +199,7 @@ extension FoldersViewController: UITableViewDataSource, UITableViewDelegate {
 
         let folder = folders[indexPath.row]
         cell.titleLabel.text = folder.title
+        cell.titleLabel.font = configuration.font(ofSize: cell.titleLabel.font.pointSize)
         cell.detailLabel.text = folder.sentences.count > 0 ? folder.sentences.map { $0.title }.joined(separator: ", ") : "Empty"
         cell.sideColor = folder.color
 
@@ -203,13 +212,13 @@ extension FoldersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let controller = SentencesViewController(folder: folders[indexPath.row])
+        let controller = SentencesViewController(folder: folders[indexPath.row], configuration: configuration)
         controller.delegate = self
         show(controller, sender: nil)
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard !AccessControl.isReadOnly else { return [] }
+        guard !configuration.isReadOnlyMode else { return [] }
 
         let editAction = UITableViewRowAction(style: .normal, title: "Edit") { [unowned self] (action, indexPath) in
             self.edit(folder: self.folders[indexPath.row])
@@ -218,7 +227,7 @@ extension FoldersViewController: UITableViewDataSource, UITableViewDelegate {
 
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [unowned self] (action, path) in
             self.folders.remove(at: path.row)
-            try? PersistenceHelper.userStorage.save(folders: self.folders)
+            try? Persistence.userStorage.save(data: self.folders)
             self.tableView.deleteRows(at: [path], with: .automatic)
         }
 
@@ -229,7 +238,7 @@ extension FoldersViewController: UITableViewDataSource, UITableViewDelegate {
 extension FoldersViewController: SentencesDelegate {
     func sentencesController(_ controller: SentencesViewController, didChangeContentsOf folder: Folder) {
         // TODO: Error Handling
-        try? PersistenceHelper.userStorage.save(folders: folders)
+        try? Persistence.userStorage.save(data: folders)
         tableView.reloadData()
     }
 }
