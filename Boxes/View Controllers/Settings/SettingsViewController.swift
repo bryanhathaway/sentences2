@@ -13,6 +13,8 @@ class SettingsViewController: GlassTableViewController {
     private let configuration: Configuration
     private var options: [[ConfigurationOption]] = [[]]
 
+    var onFinish: (() -> ())?
+
     init(configuration: Configuration) {
         self.configuration = configuration
 
@@ -29,6 +31,7 @@ class SettingsViewController: GlassTableViewController {
     }
 
     @objc func cancelTapped() {
+        onFinish?()
         navigationController?.dismiss(animated: true, completion: nil)
     }
 

@@ -91,6 +91,9 @@ class FoldersViewController: BlurredBackgroundViewController {
 
     @objc func settingsTapped() {
         let controller = SettingsViewController(configuration: configuration)
+        controller.onFinish = { [unowned self] in
+            self.tableView.reloadData()
+        }
         let nav = GlassNavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .formSheet
         nav.preferredContentSize = CGSize(width: 320, height: 480)
