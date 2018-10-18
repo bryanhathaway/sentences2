@@ -52,7 +52,6 @@
 		93FF6E4D217013DA007AC46F /* FolderOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E4C217013DA007AC46F /* FolderOptionsViewController.swift */; };
 		93FF6E512170189E007AC46F /* GlassSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E502170189E007AC46F /* GlassSwitchCell.swift */; };
 		93FF6E53217018B9007AC46F /* GlassLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E52217018B9007AC46F /* GlassLabelCell.swift */; };
-		93FF6E5521701E90007AC46F /* AccessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E5421701E90007AC46F /* AccessControl.swift */; };
 		93FF6E57217032F0007AC46F /* FolderCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E56217032F0007AC46F /* FolderCreatorViewController.swift */; };
 		93FF6E5921703699007AC46F /* FolderCreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E5821703699007AC46F /* FolderCreatorView.swift */; };
 		93FF6E8F2176B14B007AC46F /* LanguageProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E8E2176B14B007AC46F /* LanguageProcessorTests.swift */; };
@@ -124,7 +123,6 @@
 		93FF6E4C217013DA007AC46F /* FolderOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderOptionsViewController.swift; sourceTree = "<group>"; };
 		93FF6E502170189E007AC46F /* GlassSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassSwitchCell.swift; sourceTree = "<group>"; };
 		93FF6E52217018B9007AC46F /* GlassLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassLabelCell.swift; sourceTree = "<group>"; };
-		93FF6E5421701E90007AC46F /* AccessControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessControl.swift; sourceTree = "<group>"; };
 		93FF6E56217032F0007AC46F /* FolderCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCreatorViewController.swift; sourceTree = "<group>"; };
 		93FF6E5821703699007AC46F /* FolderCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCreatorView.swift; sourceTree = "<group>"; };
 		93FF6E8C2176B14B007AC46F /* BoxesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,7 +251,6 @@
 				93FF6E2C2165EBDE007AC46F /* UICollectionViewLeftAlignedLayout.swift */,
 				93FF6E3021672914007AC46F /* PersistenceHelper.swift */,
 				93FF6E3421674155007AC46F /* MultipeerHandler.swift */,
-				93FF6E5421701E90007AC46F /* AccessControl.swift */,
 				93FF6E9B2176F204007AC46F /* Configuration.swift */,
 			);
 			path = Utilities;
@@ -494,7 +491,6 @@
 				93FF6E9C2176F204007AC46F /* Configuration.swift in Sources */,
 				93FF6EA42178331F007AC46F /* UIFont+AppFonts.swift in Sources */,
 				93FF6E512170189E007AC46F /* GlassSwitchCell.swift in Sources */,
-				93FF6E5521701E90007AC46F /* AccessControl.swift in Sources */,
 				93FF6E9E21770B91007AC46F /* ConfigurationOption.swift in Sources */,
 				93FF6E252165DD1B007AC46F /* UIColor+Hex.swift in Sources */,
 				93FF6E0E21645C0F007AC46F /* TextToSpeech.swift in Sources */,

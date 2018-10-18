@@ -9,17 +9,26 @@
 import Foundation
 import UIKit
 
-class Configuration {
+class Configuration: Codable {
 
     // MARK: Font
-    var font: UIFont = UIFont.defaultFont
-
-    func font(ofSize size: CGFloat) -> UIFont {
-        return UIFont(name: font.fontName, size: size) ?? .systemFont(ofSize: size)
-    }
+    var fontName: String? = UIFont.defaultFont.fontName
 
     // MARK: 
     var isTapToSpeakEnabled: Bool = false
 
-    var defaultBoxColor: UIColor = Theme.Box.background
+    var isReadOnlyMode: Bool = false
+}
+
+
+extension Configuration {
+    func font(ofSize size: CGFloat) -> UIFont {
+        guard let fontName = fontName else { return .systemFont(ofSize: size) }
+        return UIFont(name: fontName, size: size) ?? .systemFont(ofSize: size)
+    }
+
+    var font: UIFont? {
+        get { return UIFont(name: fontName ?? "", size: 20.0) }
+        set { fontName = newValue?.fontName }
+    }
 }

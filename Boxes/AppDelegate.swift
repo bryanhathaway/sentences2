@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        let configuration = Configuration()
+        // Load Config
+        let helper = Persistence.configStorage
+        let configuration = (try? helper.read()) ?? Configuration()
 
         let splitViewController = UISplitViewController()
 

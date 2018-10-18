@@ -14,8 +14,12 @@ struct Persistence {
     static let `default` = PersistenceHelper<[Folder]>(fileName: Constants.defaultDataFileName,
                                              fileExtension: Constants.defaultDataFileType)
 
-    /// A PersistenceHelper that saves and reads to a standard JSON file.
+    /// A PersistenceHelper that saves and reads Folders to a standard JSON file.
     static let userStorage = PersistenceHelper<[Folder]>(fileNameWithExtension: Constants.savedDataFileName)
+
+    /// A PersistenceHelper that saves and reads Config to a standard JSON File
+    /// This data is separate from userStorage as that data may be quite large and isn't required at app launch.
+    static let configStorage = PersistenceHelper<Configuration>(fileNameWithExtension: Constants.savedConfigurationFileName)
 }
 
 enum PersistenceHelperError: Error {
@@ -46,10 +50,10 @@ class PersistenceHelper<T: Codable> {
     // MARK: -
 
     /// Saves the folders to the PersistenceHelper's JSON file.
-    func save(folders: T) throws {
+    func save(data: T) throws {
         guard let fileURL = fileURL else { throw PersistenceHelperError.fileNotAccessible }
 
-        let encoded = try JSONEncoder().encode(folders)
+        let encoded = try JSONEncoder().encode(data)
         try encoded.write(to: fileURL)
 
     }

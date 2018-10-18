@@ -21,8 +21,8 @@ class SendReceiveViewController: GlassTableViewController {
     var cancel: (() -> ())?
     var folders: [Folder]?
 
-    init() {
-        modes = AccessControl.isReadOnly ? [.receive] : [.send, .receive]
+    init(configuration: Configuration) {
+        modes = configuration.isReadOnlyMode ? [.receive] : [.send, .receive]
         super.init(style: .grouped)
 
         tableView.register(GlassLabelCell.self, forCellReuseIdentifier: reuseIdentifier)

@@ -31,7 +31,7 @@ class SentencesViewController: BlurredBackgroundViewController {
 
         title = folder.title
 
-        if !AccessControl.isReadOnly {
+        if !configuration.isReadOnlyMode {
             let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
             navigationItem.rightBarButtonItem = addButton
         }
@@ -148,7 +148,7 @@ extension SentencesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard !AccessControl.isReadOnly else { return [] }
+        guard !configuration.isReadOnlyMode else { return [] }
 
         let editAction = UITableViewRowAction(style: .normal, title: "Edit") { [weak self] (action, indexPath) in
             self?.editSentence(at: indexPath.row)
