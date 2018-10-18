@@ -21,9 +21,12 @@ class SentencesViewController: BlurredBackgroundViewController {
     }
 
     private let tableView = UITableView(frame: .zero, style: .plain)
+    private let configuration: Configuration
 
-    init(folder: Folder) {
+    init(folder: Folder, configuration: Configuration) {
+        self.configuration = configuration
         self.folder = folder
+
         super.init(nibName: nil, bundle: nil)
 
         title = folder.title
@@ -134,6 +137,7 @@ extension SentencesViewController: UITableViewDataSource, UITableViewDelegate {
 
         let sentence = sentences[indexPath.row]
         cell.titleLabel.text = sentence.title
+        cell.titleLabel.font = configuration.font
         cell.detailLabel.text = sentence.compiledSentence
         cell.sideColor = sentence.color
 
@@ -166,7 +170,7 @@ extension SentencesViewController: UITableViewDataSource, UITableViewDelegate {
         let sentence = sentences[indexPath.row]
 
         if splitViewController.isCollapsed {
-            let controller = DetailViewController()
+            let controller = DetailViewController(configuration: configuration)
             show(controller, sender: nil)
             controller.setSentence(sentence)
 

@@ -16,7 +16,11 @@ class DetailViewController: BlurredBackgroundViewController {
     private let canvas = UIView()
     private let engine: LayoutEngine
 
-    init() {
+    var configuration: Configuration
+
+    init(configuration: Configuration) {
+        self.configuration = configuration
+
         engine = LayoutEngine(canvas: canvas)
 
         super.init(nibName: nil, bundle: nil)
@@ -87,6 +91,7 @@ class DetailViewController: BlurredBackgroundViewController {
 
     private func box(for phrase: Phrase) -> Box {
         let box = Box(string: phrase.value)
+        box.label.font = configuration.font
         box.backgroundColor = phrase.color
         return box
     }

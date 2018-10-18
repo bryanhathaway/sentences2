@@ -12,8 +12,11 @@ import UIKit
 class FoldersViewController: BlurredBackgroundViewController {
     var folders: [Folder] = []
     let tableView = UITableView(frame: .zero, style: .plain)
+    let configuration: Configuration
 
-    init() {
+    init(configuration: Configuration) {
+        self.configuration = configuration
+
         super.init(nibName: nil, bundle: nil)
 
         title = "Folders"
@@ -87,8 +90,7 @@ class FoldersViewController: BlurredBackgroundViewController {
     }
 
     @objc func settingsTapped() {
-        let config = Configuration()
-        let controller = SettingsViewController(configuration: config)
+        let controller = SettingsViewController(configuration: configuration)
         let nav = GlassNavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .formSheet
         nav.preferredContentSize = CGSize(width: 320, height: 480)
@@ -202,7 +204,7 @@ extension FoldersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let controller = SentencesViewController(folder: folders[indexPath.row])
+        let controller = SentencesViewController(folder: folders[indexPath.row], configuration: configuration)
         controller.delegate = self
         show(controller, sender: nil)
     }

@@ -27,7 +27,7 @@ class Box: UIView {
     static let compactFontSize: CGFloat = 25.0
     static let regularFontSize: CGFloat = 40.0
 
-    private let label = UILabel()
+    let label = UILabel()
     private let backgroundView = UIView()
 
     private let verticalPadding: CGFloat
