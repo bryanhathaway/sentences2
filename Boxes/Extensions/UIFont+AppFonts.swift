@@ -11,6 +11,11 @@ import UIKit
 
 extension UIFont {
     class var openDyslexic: UIFont {
-        return UIFont(name: "OpenDyslexic-Regular", size: 16.0) ?? .systemFont(ofSize: 16.0)
+        let size = Box.compactFontSize
+        return UIFont(name: "OpenDyslexic-Regular", size: size) ?? UIFont.defaultFont
+    }
+
+    class var defaultFont: UIFont {
+        return .systemFont(ofSize: Box.compactFontSize)
     }
 }

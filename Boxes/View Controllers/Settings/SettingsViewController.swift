@@ -45,11 +45,10 @@ class SettingsViewController: GlassTableViewController {
         let fontOption = SwitchOption(title: "OpenDyslexic font",
                                       subtitle: "OpenDyslexic will be used as the font for boxes and the folder/sentence lists.")
         fontOption.getter = { [unowned self] in
-            return true
-            //            return self.configuration.font
+            return self.configuration.font == .openDyslexic
         }
         fontOption.setter = {[unowned self] isOn in
-            self.configuration.font = .systemFont(ofSize: 16.0)
+            self.configuration.font = isOn ? .openDyslexic : .defaultFont
         }
 
         // Tap to speak

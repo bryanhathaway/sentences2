@@ -137,7 +137,7 @@ extension SentencesViewController: UITableViewDataSource, UITableViewDelegate {
 
         let sentence = sentences[indexPath.row]
         cell.titleLabel.text = sentence.title
-        cell.titleLabel.font = configuration.font
+        cell.titleLabel.font = configuration.font(ofSize: cell.titleLabel.font.pointSize)
         cell.detailLabel.text = sentence.compiledSentence
         cell.sideColor = sentence.color
 

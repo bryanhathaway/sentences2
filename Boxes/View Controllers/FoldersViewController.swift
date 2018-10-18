@@ -192,6 +192,7 @@ extension FoldersViewController: UITableViewDataSource, UITableViewDelegate {
 
         let folder = folders[indexPath.row]
         cell.titleLabel.text = folder.title
+        cell.titleLabel.font = configuration.font(ofSize: cell.titleLabel.font.pointSize)
         cell.detailLabel.text = folder.sentences.count > 0 ? folder.sentences.map { $0.title }.joined(separator: ", ") : "Empty"
         cell.sideColor = folder.color
 

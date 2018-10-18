@@ -62,6 +62,8 @@
 		93FF6E9E21770B91007AC46F /* ConfigurationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E9D21770B91007AC46F /* ConfigurationOption.swift */; };
 		93FF6EA02177FBA8007AC46F /* GlassChevronCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6E9F2177FBA8007AC46F /* GlassChevronCell.swift */; };
 		93FF6EA221780A8F007AC46F /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6EA121780A8F007AC46F /* CreditsViewController.swift */; };
+		93FF6EA42178331F007AC46F /* UIFont+AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF6EA32178331F007AC46F /* UIFont+AppFonts.swift */; };
+		93FF6EA62178347A007AC46F /* OpenDyslexic-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93FF6EA52178347A007AC46F /* OpenDyslexic-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,8 @@
 		93FF6E9D21770B91007AC46F /* ConfigurationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationOption.swift; sourceTree = "<group>"; };
 		93FF6E9F2177FBA8007AC46F /* GlassChevronCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassChevronCell.swift; sourceTree = "<group>"; };
 		93FF6EA121780A8F007AC46F /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		93FF6EA32178331F007AC46F /* UIFont+AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+AppFonts.swift"; sourceTree = "<group>"; };
+		93FF6EA52178347A007AC46F /* OpenDyslexic-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenDyslexic-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,7 @@
 				93FF6E1321647C67007AC46F /* UIView+Animation.swift */,
 				93FF6E1721659433007AC46F /* UISplitViewController+Extensions.swift */,
 				93FF6E242165DD1B007AC46F /* UIColor+Hex.swift */,
+				93FF6EA32178331F007AC46F /* UIFont+AppFonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 		93FF6E0C21644476007AC46F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93FF6EA52178347A007AC46F /* OpenDyslexic-Regular.otf */,
 				93FF6E322167406E007AC46F /* DefaultSentences.json */,
 				93E9799C2161B46E00236B11 /* Assets.xcassets */,
 				93E9799E2161B46E00236B11 /* LaunchScreen.storyboard */,
@@ -429,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93E979A02161B46E00236B11 /* LaunchScreen.storyboard in Resources */,
+				93FF6EA62178347A007AC46F /* OpenDyslexic-Regular.otf in Resources */,
 				93E9799D2161B46E00236B11 /* Assets.xcassets in Resources */,
 				93FF6E332167406E007AC46F /* DefaultSentences.json in Resources */,
 			);
@@ -485,6 +492,7 @@
 				93FF6E3121672914007AC46F /* PersistenceHelper.swift in Sources */,
 				93FF6E38216DAFC8007AC46F /* SendReceiveViewController.swift in Sources */,
 				93FF6E9C2176F204007AC46F /* Configuration.swift in Sources */,
+				93FF6EA42178331F007AC46F /* UIFont+AppFonts.swift in Sources */,
 				93FF6E512170189E007AC46F /* GlassSwitchCell.swift in Sources */,
 				93FF6E5521701E90007AC46F /* AccessControl.swift in Sources */,
 				93FF6E9E21770B91007AC46F /* ConfigurationOption.swift in Sources */,
