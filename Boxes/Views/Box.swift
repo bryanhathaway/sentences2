@@ -178,16 +178,19 @@ class Box: UIView {
     /// Animates the scale and shadow of a box to make it appear lifted above its siblings.
     private func animate(scaleUp: Bool) {
         let scale: CGFloat = scaleUp ? 1.1 : 1.0
-        let radius: CGFloat = scaleUp ? 7.0 : 0.0
-        let opacity: Float = scaleUp ? 0.7 : 0.0
-
         layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: [], animations: {
             self.transform = CGAffineTransform(scaleX: scale, y: scale)
-            self.layer.shadowRadius = radius
-            self.layer.shadowOpacity = opacity
+            self.setShadow(enabled: scaleUp)
         }, completion: nil)
+    }
+
+    func setShadow(enabled: Bool) {
+        let radius: CGFloat = enabled ? 7.0 : 0.0
+        let opacity: Float = enabled ? 0.7 : 0.0
+        self.layer.shadowRadius = radius
+        self.layer.shadowOpacity = opacity
     }
 
 }

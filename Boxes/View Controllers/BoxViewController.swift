@@ -113,6 +113,17 @@ class BoxViewController: BlurredBackgroundViewController {
         canvas.addSubview(box)
         box.center = canvas.center
         boxes.append(box)
+
+        view.layoutIfNeeded()
+        box.alpha = 0.0
+        box.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+        box.setShadow(enabled: true)
+
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1.0, options: [.curveEaseIn], animations: {
+            box.transform = CGAffineTransform.identity
+            box.alpha = 1.0
+            box.setShadow(enabled: false)
+        }, completion: nil)
     }
 
     // MARK: - Text to Speech
