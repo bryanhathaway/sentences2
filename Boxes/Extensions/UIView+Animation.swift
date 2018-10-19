@@ -18,28 +18,31 @@ struct TimingOptions {
 }
 
 extension UIView {
-    func animateCenter(to center: CGPoint, options: TimingOptions = TimingOptions.default) {
+    typealias CompletionHandler = ((Bool) -> Void)
 
-        animate(options: options) {
+    func animateCenter(to center: CGPoint, options: TimingOptions = TimingOptions.default, completion: CompletionHandler? = nil) {
+
+        animate(options: options, animations: {
             self.center = center
-        }
+        }, completion: completion)
     }
 
-    func animateOrigin(to origin: CGPoint, options: TimingOptions = TimingOptions.default) {
-        animate(options: options) {
+    func animateOrigin(to origin: CGPoint, options: TimingOptions = TimingOptions.default, completion: CompletionHandler? = nil) {
+        animate(options: options, animations: {
             self.frame.origin = origin
-        }
+        }, completion: completion)
     }
 
     private func animate(options: TimingOptions = TimingOptions.default,
-                         animations: @escaping (() -> ())) {
+                         animations: @escaping (() -> ()),
+                        completion: CompletionHandler? = nil) {
         UIView.animate(withDuration: options.duration,
                        delay: options.delay,
                        usingSpringWithDamping: options.damping,
                        initialSpringVelocity: options.spring,
                        options: [],
                        animations: animations,
-                       completion: nil)
+                       completion: completion)
     }
 
     private static let wriggleKeyPos = "wriggleKeyPos"

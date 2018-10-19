@@ -29,6 +29,8 @@ class Box: UIView {
 
     let label = UILabel()
     private let backgroundView = UIView()
+    private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: Theme.Box.blurStyle))
+    private let animator = UIViewPropertyAnimator(duration: 1.0, curve: .linear)
 
     private let verticalPadding: CGFloat
     private let horizontalPadding: CGFloat
@@ -36,6 +38,8 @@ class Box: UIView {
     weak var layoutEngine: LayoutEngine?
 
     var talkOnTouchBegan: Bool = false
+
+    var onLongHold: ((Box) -> ())?
 
     override var backgroundColor: UIColor? {
         get {
@@ -46,6 +50,15 @@ class Box: UIView {
         }
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        // Must explicity stop property animators before releasing.
+        animator.stopAnimation(true)
+    }
+
     init(string: String) {
         let isNonWord = string.trimmingCharacters(in: .punctuationCharacters).trimmingCharacters(in: .whitespaces).isEmpty
         verticalPadding = 8.0
@@ -53,15 +66,17 @@ class Box: UIView {
 
         super.init(frame: .zero)
 
-        let blur = UIBlurEffect(style: Theme.Box.blurStyle)
-        let blurView = UIVisualEffectView(effect: blur)
         blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurView.alpha = 1.0
         addSubview(blurView)
+        animator.addAnimations { [weak self] in
+            self?.blurView.effect = nil
+        }
+        animator.fractionComplete = 0.75
+        blurView.isHidden = true
 
         backgroundView.backgroundColor = Theme.Box.background
         backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        backgroundView.alpha = 0.7
+        backgroundView.alpha = 1.0
         addSubview(backgroundView)
 
         layer.shadowOffset = .zero
@@ -85,6 +100,10 @@ class Box: UIView {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         pan.delegate = self
         addGestureRecognizer(pan)
+
+        let longHold = UILongPressGestureRecognizer(target: self, action: #selector(didLongHold))
+        longHold.minimumPressDuration = 0.75
+        addGestureRecognizer(longHold)
 
         BoxHapticEngine.shared.prepare()
     }
@@ -111,8 +130,8 @@ class Box: UIView {
         return size
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc func didLongHold() {
+        onLongHold?(self)
     }
 
     // MARK: - Touch Interaction
@@ -133,10 +152,13 @@ class Box: UIView {
             guard let origin = centerOrigin else { return }
             let trans = sender.translation(in: superview)
             center = CGPoint(x: origin.x + trans.x, y: origin.y + trans.y)
+            set(transparent: self.layoutEngine?.viewHasCollison(self) == true)
 
         case .cancelled: fallthrough
         case .ended:
-            layoutEngine?.snap(view: self)
+            layoutEngine?.snap(view: self) { _ in
+                self.set(transparent: self.layoutEngine?.viewHasCollison(self) == true)
+            }
             centerOrigin = nil
             animate(scaleUp: false)
 
@@ -162,15 +184,15 @@ class Box: UIView {
         }
     }
 
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-    }
-
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         // To handle cases of the touch ending when no pan ocurred.
         animate(scaleUp: false)
+    }
 
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animate(scaleUp: false)
     }
 
     // MARK: - Animation
@@ -178,16 +200,26 @@ class Box: UIView {
     /// Animates the scale and shadow of a box to make it appear lifted above its siblings.
     private func animate(scaleUp: Bool) {
         let scale: CGFloat = scaleUp ? 1.1 : 1.0
-        let radius: CGFloat = scaleUp ? 7.0 : 0.0
-        let opacity: Float = scaleUp ? 0.7 : 0.0
-
         layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: [], animations: {
             self.transform = CGAffineTransform(scaleX: scale, y: scale)
-            self.layer.shadowRadius = radius
-            self.layer.shadowOpacity = opacity
+            self.setShadow(enabled: scaleUp)
         }, completion: nil)
+    }
+
+    func setShadow(enabled: Bool) {
+        let radius: CGFloat = enabled ? 7.0 : 0.0
+        let opacity: Float = enabled ? 0.7 : 0.0
+        self.layer.shadowRadius = radius
+        self.layer.shadowOpacity = opacity
+    }
+
+    func set(transparent: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            self.blurView.isHidden = !transparent
+            self.backgroundView.alpha = transparent ? 0.6 : 1.0
+        }
     }
 
 }
@@ -195,5 +227,42 @@ class Box: UIView {
 extension Box: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+}
+
+class ExpandableBox: Box {
+
+    init() {
+        super.init(string: " ")
+
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(didPinch(_:)))
+        addGestureRecognizer(pinch)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private var expandableWidth: CGFloat = 100.0
+    override var intrinsicContentSize: CGSize {
+        var size = super.intrinsicContentSize
+        size.width = expandableWidth
+        return size
+    }
+
+    @objc func didPinch(_ pinchGesture: UIPinchGestureRecognizer) {
+        switch pinchGesture.state {
+        case .began: break
+
+        case .changed:
+            let newWidth = expandableWidth * pinchGesture.scale
+            guard newWidth > 75 else { return }
+            frame.size.width = newWidth
+
+        case .cancelled: fallthrough
+        case .ended:
+                expandableWidth = frame.size.width
+        default: break
+        }
     }
 }
