@@ -37,6 +37,8 @@ class Box: UIView {
 
     var talkOnTouchBegan: Bool = false
 
+    var onLongHold: ((Box) -> ())?
+
     override var backgroundColor: UIColor? {
         get {
             return backgroundView.backgroundColor
@@ -53,15 +55,15 @@ class Box: UIView {
 
         super.init(frame: .zero)
 
-        let blur = UIBlurEffect(style: Theme.Box.blurStyle)
-        let blurView = UIVisualEffectView(effect: blur)
-        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurView.alpha = 1.0
-        addSubview(blurView)
+//        let blur = UIBlurEffect(style: Theme.Box.blurStyle)
+//        let blurView = UIVisualEffectView(effect: blur)
+//        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        blurView.alpha = 1.0
+//        addSubview(blurView)
 
         backgroundView.backgroundColor = Theme.Box.background
         backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        backgroundView.alpha = 0.7
+        backgroundView.alpha = 1.0
         addSubview(backgroundView)
 
         layer.shadowOffset = .zero
@@ -85,6 +87,10 @@ class Box: UIView {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         pan.delegate = self
         addGestureRecognizer(pan)
+
+        let longHold = UILongPressGestureRecognizer(target: self, action: #selector(didLongHold))
+        longHold.minimumPressDuration = 0.75
+        addGestureRecognizer(longHold)
 
         BoxHapticEngine.shared.prepare()
     }
@@ -113,6 +119,10 @@ class Box: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc func didLongHold() {
+        onLongHold?(self)
     }
 
     // MARK: - Touch Interaction
@@ -162,15 +172,15 @@ class Box: UIView {
         }
     }
 
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-    }
-
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         // To handle cases of the touch ending when no pan ocurred.
         animate(scaleUp: false)
+    }
 
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animate(scaleUp: false)
     }
 
     // MARK: - Animation

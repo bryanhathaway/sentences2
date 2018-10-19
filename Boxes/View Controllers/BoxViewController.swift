@@ -49,7 +49,7 @@ class BoxViewController: BlurredBackgroundViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.clipsToBounds = true
         view.backgroundColor = Theme.background
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         splitViewController?.presentsWithGesture = false
@@ -77,12 +77,8 @@ class BoxViewController: BlurredBackgroundViewController {
 
 
         let boxes = nonSpaces.map { phrase -> Box in
-            let boxView = self.box(for: phrase)
-            boxView.layoutEngine = engine
-            canvas.addSubview(boxView)
-            boxView.frame.size = boxView.intrinsicContentSize // Has to be after adding to superview for layout reasons.
-
-            return boxView
+            let box = self.box(for: phrase)
+            return box
         }
 
         engine.distribute(views: boxes)
@@ -91,24 +87,42 @@ class BoxViewController: BlurredBackgroundViewController {
     }
 
     private func box(for phrase: Phrase) -> Box {
-        let box = Box(string: phrase.value)
-        box.label.font = configuration.font(ofSize: box.label.font.pointSize)
+        let box = self.box(for: phrase.value)
         box.backgroundColor = phrase.color
-        box.talkOnTouchBegan = configuration.isTapToSpeakEnabled
         return box
     }
 
-    private func addExtraBox(text: String?) {
+    private func box(for text: String?) -> Box {
         var box: Box
         if let text = text, text.count > 0 {
             box = Box(string: text)
+            box.talkOnTouchBegan = configuration.isTapToSpeakEnabled
+
         } else {
             box = ExpandableBox()
         }
 
+        box.label.font = configuration.font(ofSize: box.label.font.pointSize)
         box.backgroundColor = Theme.Box.background
         box.frame.size = box.intrinsicContentSize
-        canvas.addSubview(box)
+
+        box.onLongHold = { [unowned self] box in
+            self.showColorPicker(for: box)
+        }
+
+        configure(box: box, for: engine)
+
+        return box
+    }
+
+    private func configure(box: Box, for engine: LayoutEngine) {
+        box.layoutEngine = engine
+        engine.canvas.addSubview(box)
+        box.frame.size = box.intrinsicContentSize
+    }
+
+    private func addExtraBox(text: String?) {
+        let box = self.box(for: text)
         box.center = canvas.center
         boxes.append(box)
 
@@ -122,6 +136,21 @@ class BoxViewController: BlurredBackgroundViewController {
             box.alpha = 1.0
             box.setShadow(enabled: false)
         }, completion: nil)
+    }
+
+    private func showColorPicker(for box: Box) {
+        let controller = ColorPickerPopover()
+        guard let popover = controller.popoverPresentationController else { return }
+        popover.delegate = self
+        popover.sourceRect = box.bounds
+        popover.sourceView = box
+
+        controller.onColorPicked = { [weak box, weak controller] color in
+            box?.backgroundColor = color
+            controller?.dismiss(animated: true, completion: nil)
+        }
+
+        present(controller, animated: true, completion: nil)
     }
 
     func clear() {
@@ -163,3 +192,8 @@ class BoxViewController: BlurredBackgroundViewController {
     }
 }
 
+extension BoxViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+}
