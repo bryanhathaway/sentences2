@@ -98,16 +98,14 @@ class BoxViewController: BlurredBackgroundViewController {
         return box
     }
 
-    func clear() {
-        boxes.forEach { $0.removeFromSuperview() }
-    }
+    private func addExtraBox(text: String?) {
+        var box: Box
+        if let text = text, text.count > 0 {
+            box = Box(string: text)
+        } else {
+            box = ExpandableBox()
+        }
 
-    @objc func shuffle() {
-        engine.shuffle(views: boxes)
-    }
-
-    @objc func addTapped() {
-        let box = ExpandableBox()
         box.backgroundColor = Theme.Box.background
         box.frame.size = box.intrinsicContentSize
         canvas.addSubview(box)
@@ -124,6 +122,26 @@ class BoxViewController: BlurredBackgroundViewController {
             box.alpha = 1.0
             box.setShadow(enabled: false)
         }, completion: nil)
+    }
+
+    func clear() {
+        boxes.forEach { $0.removeFromSuperview() }
+    }
+
+    @objc func shuffle() {
+        engine.shuffle(views: boxes)
+    }
+
+    @objc func addTapped() {
+        let controller = UIAlertController(title: "New Box", message: "What should be displayed in the box?", preferredStyle: .alert)
+        controller.addTextField(configurationHandler: nil)
+        controller.addAction(UIAlertAction(title: "Create", style: .default, handler: { [unowned self] _ in
+            let text = controller.textFields?.first?.text
+            self.addExtraBox(text: text)
+        }))
+        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(controller, animated: true, completion: nil)
     }
 
     // MARK: - Text to Speech
