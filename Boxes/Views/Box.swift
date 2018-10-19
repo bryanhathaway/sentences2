@@ -29,6 +29,8 @@ class Box: UIView {
 
     let label = UILabel()
     private let backgroundView = UIView()
+    private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: Theme.Box.blurStyle))
+    private let animator = UIViewPropertyAnimator(duration: 1.0, curve: .linear)
 
     private let verticalPadding: CGFloat
     private let horizontalPadding: CGFloat
@@ -48,6 +50,15 @@ class Box: UIView {
         }
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        // Must explicity stop property animators before releasing.
+        animator.stopAnimation(true)
+    }
+
     init(string: String) {
         let isNonWord = string.trimmingCharacters(in: .punctuationCharacters).trimmingCharacters(in: .whitespaces).isEmpty
         verticalPadding = 8.0
@@ -55,11 +66,13 @@ class Box: UIView {
 
         super.init(frame: .zero)
 
-//        let blur = UIBlurEffect(style: Theme.Box.blurStyle)
-//        let blurView = UIVisualEffectView(effect: blur)
-//        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        blurView.alpha = 1.0
-//        addSubview(blurView)
+        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(blurView)
+        animator.addAnimations { [weak self] in
+            self?.blurView.effect = nil
+        }
+        animator.fractionComplete = 0.75
+        blurView.isHidden = true
 
         backgroundView.backgroundColor = Theme.Box.background
         backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -117,10 +130,6 @@ class Box: UIView {
         return size
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     @objc func didLongHold() {
         onLongHold?(self)
     }
@@ -143,10 +152,13 @@ class Box: UIView {
             guard let origin = centerOrigin else { return }
             let trans = sender.translation(in: superview)
             center = CGPoint(x: origin.x + trans.x, y: origin.y + trans.y)
+            set(transparent: self.layoutEngine?.viewHasCollison(self) == true)
 
         case .cancelled: fallthrough
         case .ended:
-            layoutEngine?.snap(view: self)
+            layoutEngine?.snap(view: self) { _ in
+                self.set(transparent: self.layoutEngine?.viewHasCollison(self) == true)
+            }
             centerOrigin = nil
             animate(scaleUp: false)
 
@@ -201,6 +213,13 @@ class Box: UIView {
         let opacity: Float = enabled ? 0.7 : 0.0
         self.layer.shadowRadius = radius
         self.layer.shadowOpacity = opacity
+    }
+
+    func set(transparent: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            self.blurView.isHidden = !transparent
+            self.backgroundView.alpha = transparent ? 0.6 : 1.0
+        }
     }
 
 }

@@ -11,7 +11,7 @@ import AVFoundation
 
 class BoxViewController: BlurredBackgroundViewController {
 
-    private var boxes: [UIView] = []
+    private var boxes: [Box] = []
     private var sentence: Sentence?
     private let canvas = UIView()
     private let engine: LayoutEngine
@@ -158,6 +158,7 @@ class BoxViewController: BlurredBackgroundViewController {
     }
 
     @objc func shuffle() {
+        boxes.forEach { $0.set(transparent: false) }
         engine.shuffle(views: boxes)
     }
 
