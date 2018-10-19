@@ -27,7 +27,8 @@ class BoxViewController: BlurredBackgroundViewController {
 
         let shuffleItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_shuffle"), style: .plain, target: self, action: #selector(shuffle))
         let speakItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_microphone"), style: .plain, target: self, action: #selector(speakTapped(_:)))
-        navigationItem.rightBarButtonItems = [shuffleItem, speakItem]
+        let addBoxItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_add_box"), style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItems = [shuffleItem, speakItem, addBoxItem]
 
         backgroundImage = #imageLiteral(resourceName: "aurora1")
         blurStyle = .dark
@@ -103,6 +104,15 @@ class BoxViewController: BlurredBackgroundViewController {
 
     @objc func shuffle() {
         engine.shuffle(views: boxes)
+    }
+
+    @objc func addTapped() {
+        let box = ExpandableBox()
+        box.backgroundColor = Theme.Box.background
+        box.frame.size = box.intrinsicContentSize
+        canvas.addSubview(box)
+        box.center = canvas.center
+        boxes.append(box)
     }
 
     // MARK: - Text to Speech

@@ -197,3 +197,40 @@ extension Box: UIGestureRecognizerDelegate {
         return true
     }
 }
+
+class ExpandableBox: Box {
+
+    init() {
+        super.init(string: " ")
+
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(didPinch(_:)))
+        addGestureRecognizer(pinch)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private var expandableWidth: CGFloat = 100.0
+    override var intrinsicContentSize: CGSize {
+        var size = super.intrinsicContentSize
+        size.width = expandableWidth
+        return size
+    }
+
+    @objc func didPinch(_ pinchGesture: UIPinchGestureRecognizer) {
+        switch pinchGesture.state {
+        case .began: break
+
+        case .changed:
+            let newWidth = expandableWidth * pinchGesture.scale
+            guard newWidth > 75 else { return }
+            frame.size.width = newWidth
+
+        case .cancelled: fallthrough
+        case .ended:
+                expandableWidth = frame.size.width
+        default: break
+        }
+    }
+}
