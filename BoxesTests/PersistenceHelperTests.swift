@@ -33,7 +33,7 @@ class PersistenceHelperTests: XCTestCase {
         let testFolder = Folder(title: "Test Folder", sentences: [testSentence], color: .white)
 
         do {
-            try testableHelper.save(folders: [testFolder])
+            try testableHelper.save(data: [testFolder])
 
             let folders = try testableHelper.read()
             XCTAssert(folders == [testFolder])
