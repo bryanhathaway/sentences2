@@ -11,11 +11,15 @@ import UIKit
 private enum Option: CaseIterable {
     case overwrite
     case readonly
+    case openDyslexic
+    case tapToSpeak
 
     var title: String {
         switch self {
         case .overwrite: return "Delete Existing"
         case .readonly: return "Read-Only Mode"
+        case .openDyslexic: return "Use OpenDyslexic"
+        case .tapToSpeak: return "Tap to Speak"
         }
     }
 
@@ -23,6 +27,8 @@ private enum Option: CaseIterable {
         switch self {
         case .overwrite: return "These folders will become the only folders on the receiving device."
         case .readonly: return "The receiving device will be unable to create, edit, delete, or send any folders/sentences."
+        case .openDyslexic: return "The receiving device will use the OpenDyslexic font."
+        case .tapToSpeak: return "Words will be spoken aloud when a box is tapped."
         }
     }
 }
@@ -53,9 +59,13 @@ class FolderOptionsViewController: GlassTableViewController {
     }
 
     @objc func nextTapped() {
-        let controller = SendingViewController(folders: folders,
-                                               readOnly: data[.readonly] ?? false,
-                                               overwrite: data[.overwrite] ?? false)
+        let transportData = TransportData(folders: folders,
+                                          isReadOnly: data[.readonly] ?? false,
+                                          overwrite: data[.overwrite] ?? false,
+                                          useOpenDyslexic: data[.openDyslexic] ?? false,
+                                          useTapToSpeak: data[.tapToSpeak] ?? false)
+
+        let controller = SendingViewController(transportData: transportData)
         controller.done = done
         show(controller, sender: nil)
     }

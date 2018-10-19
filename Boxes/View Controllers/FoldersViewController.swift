@@ -140,10 +140,12 @@ class FoldersViewController: BlurredBackgroundViewController {
     @objc func shareTapped() {
         let controller = SendReceiveViewController(configuration: configuration)
         controller.completion = { [unowned self] data in
-            let newFolders = data.overwrite ? data.folders : self.mergedFolders(newFolders: data.folders)
             self.configuration.isReadOnlyMode = data.isReadOnly
+            self.configuration.isTapToSpeakEnabled = data.useTapToSpeak
+            self.configuration.font = data.useOpenDyslexic ? UIFont.openDyslexic : UIFont.defaultFont
             try? Persistence.configStorage.save(data: self.configuration)
 
+            let newFolders = data.overwrite ? data.folders : self.mergedFolders(newFolders: data.folders)
             try? Persistence.userStorage.save(data: newFolders)
             self.folders = newFolders
             self.tableView.reloadData()

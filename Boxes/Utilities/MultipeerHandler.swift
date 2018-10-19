@@ -13,6 +13,8 @@ struct TransportData: Codable {
     var folders: [Folder]
     var isReadOnly: Bool
     var overwrite: Bool
+    var useOpenDyslexic: Bool
+    var useTapToSpeak: Bool
 }
 
 class MultipeerHandler: NSObject, MCSessionDelegate {
@@ -48,17 +50,13 @@ class MultipeerSender: MultipeerHandler, MCNearbyServiceAdvertiserDelegate {
 
     let senderData: Data?
 
-    init(folders: [Folder], readOnly: Bool, overwrite: Bool) {
-        let transport = TransportData(folders: folders,
-                                      isReadOnly: readOnly,
-                                      overwrite: overwrite)
-
-        senderData = try? JSONEncoder().encode(transport)
+    init(transportData: TransportData) {
+        senderData = try? JSONEncoder().encode(transportData)
 
         super.init()
 
-        let word = folders.count == 1 ? "Folder" : "Folders"
-        let discoveryInfo = [MultipeerHandler.DiscoveryKey.detail : "\(folders.count) \(word)"]
+        let word = transportData.folders.count == 1 ? "Folder" : "Folders"
+        let discoveryInfo = [MultipeerHandler.DiscoveryKey.detail : "\(transportData.folders.count) \(word)"]
 
         let blah = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: discoveryInfo, serviceType: MultipeerHandler.serviceType)
         blah.delegate = self
