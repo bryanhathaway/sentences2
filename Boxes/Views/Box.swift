@@ -211,7 +211,7 @@ class Box: UIView {
     }
 
     func set(transparent: Bool) {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.15) {
             self.blurView.isHidden = !transparent
             self.backgroundView.alpha = transparent ? 0.6 : 1.0
         }
