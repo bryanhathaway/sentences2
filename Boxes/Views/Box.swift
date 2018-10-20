@@ -118,11 +118,6 @@ class Box: UIView {
         invalidateIntrinsicContentSize()
     }
 
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-
-    }
-
     override var intrinsicContentSize: CGSize {
         var size = label.intrinsicContentSize
         size.width += horizontalPadding * 2.0

@@ -16,7 +16,16 @@ class BoxViewController: BlurredBackgroundViewController {
     private let canvas = UIView()
     private let engine: LayoutEngine
 
-    var configuration: Configuration
+    var configuration: Configuration {
+        didSet {
+            boxes.forEach { box in
+                box.talkOnTouchBegan = configuration.isTapToSpeakEnabled
+                box.label.font = configuration.font(ofSize: box.label.font.pointSize)
+                box.label.invalidateIntrinsicContentSize()
+                box.frame.size = box.intrinsicContentSize
+            }
+        }
+    }
 
     init(configuration: Configuration) {
         self.configuration = configuration

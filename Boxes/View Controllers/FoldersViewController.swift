@@ -95,6 +95,10 @@ class FoldersViewController: BlurredBackgroundViewController {
             self.tableView.reloadData()
             self.splitViewController?.toggleMasterDisplayed()
             try? Persistence.configStorage.save(data: self.configuration)
+            
+            guard let nav = self.splitViewController?.viewControllers.last as? UINavigationController else { return }
+            guard let controller = nav.topViewController as? BoxViewController else { return }
+            controller.configuration = self.configuration
         }
 
         let nav = GlassNavigationController(rootViewController: controller)
