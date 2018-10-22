@@ -11,6 +11,8 @@ import UIKit
 
 struct Constants {
     static let savedDataFileName = "folders.json"
+    static let savedConfigurationFileName = "config.json"
+
     static let defaultDataFileName = "DefaultSentences"
     static let defaultDataFileType = "json"
 }

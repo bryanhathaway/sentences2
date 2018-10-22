@@ -15,13 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        // Load Config
+        let helper = Persistence.configStorage
+        let configuration = (try? helper.read()) ?? Configuration()
+
         let splitViewController = UISplitViewController()
 
-        let detailController = DetailViewController()
+        let detailController = BoxViewController(configuration: configuration)
         detailController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         let detailNav = GlassNavigationController(rootViewController: detailController)
 
-        let masterController = FoldersViewController()
+        let masterController = FoldersViewController(configuration: configuration)
         let masterNav = GlassNavigationController(rootViewController: masterController)
 
         splitViewController.viewControllers = [masterNav, detailNav]

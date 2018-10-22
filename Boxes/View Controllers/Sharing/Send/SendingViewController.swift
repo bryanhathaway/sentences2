@@ -13,10 +13,8 @@ class SendingViewController: BlurredBackgroundViewController {
     let sender: MultipeerSender
     var done: (() -> ())?
 
-    init(folders: [Folder], readOnly: Bool, overwrite: Bool) {
-        sender = MultipeerSender(folders: folders,
-                                 readOnly: readOnly,
-                                 overwrite: overwrite)
+    init(transportData: TransportData) {
+        sender = MultipeerSender(transportData: transportData)
 
         super.init(nibName: nil, bundle: nil)
 

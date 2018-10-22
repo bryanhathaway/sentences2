@@ -32,12 +32,13 @@ class ShadowedTileCell: UITableViewCell {
 
         blurView.addGestureRecognizer(BounceGestureRecognizer())
 
-
+        let bottomConstraint = blurView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6.0)
+        bottomConstraint.priority = .defaultHigh
         NSLayoutConstraint.activate([
             blurView.topAnchor.constraint(equalTo: topAnchor, constant: 6.0),
             blurView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.0),
             blurView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12.0),
-            blurView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6.0),
+            bottomConstraint,
             ])
     }
 

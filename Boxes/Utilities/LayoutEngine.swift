@@ -74,7 +74,7 @@ class LayoutEngine {
     }
 
     /// Snaps a view with animation to its nearest line, making it center-aligned to other views in its line.
-    func snap(view: UIView) {
+    func snap(view: UIView, completion: ((Bool) -> ())? = nil) {
         let lineHeight = boxHeight + lineSpacing
 
         // NearestRow will result to the origin.y of the closest row.
@@ -92,6 +92,18 @@ class LayoutEngine {
         newCenter.x = max(newCenter.x, 0)
         newCenter.x = min(newCenter.x, canvas.bounds.size.width)
 
-        view.animateCenter(to: newCenter)
+        view.animateCenter(to: newCenter, completion: completion)
+    }
+
+    /// Determins if the provided view intersects with the frame of any other view managed by the engine.
+    func viewHasCollison(_ view: UIView) -> Bool {
+        for otherView in canvas.subviews {
+            guard otherView != view else { continue }
+            if view.frame.intersects(otherView.frame) {
+                return true
+            }
+        }
+
+        return false
     }
 }

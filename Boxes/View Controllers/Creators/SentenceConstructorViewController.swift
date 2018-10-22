@@ -177,7 +177,7 @@ extension SentenceConstructorViewController: UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height: CGFloat = 45.0
         let phrase = sentence.phrases[indexPath.row]
-        let width = phrase.value.width(withConstrainedHeight: height, font: Box.compactFont)
+        let width = phrase.value.width(withConstrainedHeight: height, font: UIFont.systemFont(ofSize: Box.compactFontSize))
         return CGSize(width: width + 16.0, height: height)
     }
 
